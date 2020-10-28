@@ -14,14 +14,15 @@ class Appoinment
         @time = time 
         @doctor = doctor 
         @patient = patient
+        @@all << self 
     end 
 
     # instance methods 
+    
 
     # class methods 
     def sell.all 
         @@all 
     end 
-
-    
+  
 end 
