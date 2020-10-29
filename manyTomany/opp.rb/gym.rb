@@ -18,6 +18,20 @@ class Gym
 
     # instance methods 
 
+    # return all memberships for this specific gym 
+    def memeberships 
+        Membership.all.select do |memebership| 
+            memebership.lifter == self 
+        end 
+    end
+
+    # return the list of all lifter that a specific gym has 
+    def lifters 
+        self.memeberships.map do |memebership| 
+             memebership.lifter  
+         end 
+     end 
+
     # class method 
     def self.all 
         @@all

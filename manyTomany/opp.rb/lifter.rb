@@ -23,6 +23,13 @@ class Lifter
             memebership.lifter == self 
         end 
     end 
+
+    # return the list of all gym that a specific lifter has memberships to 
+    def gyms 
+       self.memeberships.map do |memebership| 
+            memebership.gym  
+        end 
+    end 
     
     # class method 
     def self.all 
