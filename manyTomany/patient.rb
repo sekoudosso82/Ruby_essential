@@ -24,11 +24,7 @@ class Patient
         end 
     end
     def doctors 
-        # returns an array of doctors for THIS patient
-    
-        # patients don't have a direct relationship to the doctor
-        
-    
+
         # doctors = []
     
         # patients_appointments.each do |appointment|
