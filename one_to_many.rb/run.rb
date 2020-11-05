@@ -19,5 +19,5 @@ require_relative './country.rb'
     egypt = Country.new(30000000, "Egypt", "Cairo", "Pound", asia)
     china = Country.new(1300000000, "China", "Beijing", "RMB", asia)
     santas_workshop = Country.new(10, "Santa's Workshop", "Santa's chair", "Good deeds", antarctica)
-binding.pry
+# binding.pry
     

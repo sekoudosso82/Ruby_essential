@@ -1,0 +1,4 @@
+# gem 'pry'
+# gem 'pry-byebug'
+# gem 'pry-rails'
+gem 'pry', '~> 0.13.1'
