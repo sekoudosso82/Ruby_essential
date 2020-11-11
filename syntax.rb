@@ -506,7 +506,86 @@
 
     Teacher.order(:name)
 
+Ruby ENUMERABLE 
 
+    # you have been provided with a custom object called colors that defines its own each method. You need to iterate over the items and return an Array containing the values.
+    def iterate_colors(colors)
+        # Your code here
+          result = []
+          colors.each do |item|
+              result << item or # result.push(item )
+          end 
+          result 
+    end
+
+    # Ruby - Enumerable - each_with_index
+        colors = ['red', 'green', 'blue']
+        colors.each_with_index { |item, index| p "#{index}:#{item}" }
+        "0:red"
+        "1:green"
+        "2:blue"
+
+    # In this challenge, your task is to complete the skip_animals 
+    # method that takes an animals array and a skip integer and 
+    # returns an array of all elements except first skip number 
+    # of items as shown in the example below.
+
+    # For example,
+    #     skip_animals(['leopard', 'bear', 'fox', 'wolf'], 2)
+    #     ["2:fox", "3:wolf"]
+    # It is guaranteed that number of items in animals array 
+    # is greater than the value of skip. 
+    def skip_animals(animals, skip)
+  
+        result =animals[skip..animals.length-1] # get arr from skip to end
+        final = []
+        result.each_with_index do |item, index| 
+            final.push("#{index+skip}:#{item}")
+        end
+        final
+    end
+    Ruby - Enumerable - collect
+    def rot13(secret_messages)
+        # In this challenge, your task is to write a method which 
+        # takes an array of strings (containing secret enemy 
+        # message bits!) and decodes its elements using ROT13 
+        # cipher system; returning an array containing the final 
+        # messages.
+        # For example, this is how ROT13 algorithm works,
+        # Original text:
+        #     Why did the chicken cross the road?
+        #     Gb trg gb gur bgure fvqr!
+        # On application of ROT13,
+        #     Jul qvq gur puvpxra pebff gur ebnq?
+        #     To get to the other side!
+
+        secret_messages.map {|m| m.tr!("a-z", "n-za-m")} # or 
+        # secret_messages.map {|m| m.tr!('A-Za-z', 'N-ZA-Mn-za-m')}
+       
+        # tr's man page explains it pretty well; it's a filter 
+        # that converts characters from one set to another. The 
+        # first set specified is [a-z], which is a shorthand way 
+        # of typing [abcdefghijklmnopqrstuvwxyz]. The second is 
+        # [n-za-m], which turns into [nopqrstuvwxyzabcdefghijklm]. 
+        # tr reads each character from stdin, and if it appears in 
+        # the first set, it replaces it with the character in the 
+        # same position in the second set (this means [ and ] are 
+        # getting replaced with themselves, so including them was 
+        # pointless, but a lot of people do it by mistake because 
+        #     regular expressions use them to represent character 
+        #     classes so they think tr requires them).
+      
+      end
+
+Ruby - Enumerable - reduce
+    # Consider an arithmetico-geometric sequence where the n-th term 
+    # of the sequence is denoted by Tn = n*n +  1,  n >= 0. 
+    # In this challenge, your task is to complete the sum method 
+    # which takes an integer n and returns the sum to the n 
+    # terms of the series.  
+    def sum_terms(n)
+        (1..n).reduce(0) {|sum, val| sum += (val * val + 1)}
+    end
 
 
 def new
