@@ -605,8 +605,8 @@ Ruby Enumerables: 'any', 'all', 'none', and 'find'
         h.any? {|key, value| value.is_a? String} # => False
 
         def func_any(hash)
-            # Check and return true if any key object within the hash is of the type Integer
-            # If not found, return false.
+            # Check and return true if any key object within the hash is 
+            # of the type Integer If not found, return false.
             hash.any? { |key, value| key.is_a? Integer}
         end
         
@@ -619,8 +619,8 @@ Ruby Enumerables: 'any', 'all', 'none', and 'find'
         h.all? {|key, value| key.is_a? String} # => True
 
         def func_all(hash)
-            # Check and return true if all the values within the hash are Integers and are < 10
-            # If not all values satisfy this, return false.
+            # Check and return true if all the values within the hash are 
+            # Integers and are < 10 If not all values satisfy this, return false.
             hash.all? { |key, value| value<10 }
         end
         
@@ -634,26 +634,63 @@ Ruby Enumerables: 'any', 'all', 'none', and 'find'
         h.none? {|key, value| value < 3} # => False
         
         def func_none(hash)
-            # Check and return true if none of the values within the hash are nil
-            # If any value contains nil, return false.
+            # Check and return true if none of the values within the hash 
+            # are nil If any value contains nil, return false.
             hash.none? { |key, value| value.nil? }
         end
 
     The find method returns the first element for which block
     is not false:
 
-        # returns the first element greater than 5 and `nil` if none satisfies the condition
+        # returns the first element greater than 5 and `nil` 
+        # if none satisfies the condition
         arr.find {|a| a > 5} # => 6
-        # returns an Array of the first match [key, value] that satisfies the condition and nil otherwise
+        # returns an Array of the first match [key, value] that 
+        # satisfies the condition and nil otherwise
         h.find {|key, value| key == "b"} # => ["b", 2]
 
         def func_find(hash)
-            # Check and return the first object that satisfies either of the following properties:
-            #   1. There is a [key, value] pair where the key and value are both Integers and the value is < 20 
-            #   2. There is a [key, value] pair where the key and value are both Strings and the value starts with `a`.
-            hash.find { |key, value| ((key.is_a? Integer) && (value.is_a? Integer) && (value<20)) | ((key.is_a? String) && (value.is_a? String) && (value.start_with? 'a'))}
+            # Check and return the first object that satisfies 
+            # either of the following properties:
+            #   1. There is a [key, value] pair where the key and value 
+                  # are both Integers and the value is < 20 
+            #   2. There is a [key, value] pair where the key and value 
+                  # are both Strings and the value starts with `a`.
+            hash.find { |key, value| ((key.is_a? Integer) && (value.is_a? Integer) && (value<20)) | 
+                        ((key.is_a? String) && (value.is_a? String) && (value.start_with? 'a'))}
         end
 
+    # Ruby - Enumerable - group_by   
+        In Ruby, you can easily do this by using group_by method 
+        provide by Enumerable module.
+
+        > (1..5).group_by {|x| x%2}
+        {1=>[1,3,5], 0=>[2, 4]}
+        
+        # Of course this is a very simple example and its use can 
+        # be very complicated in nature.
+        
+        # In this challenge, your task is to group the students into 
+        # two categories corresponding to their marks obtained in a test. 
+        # The list of students will be provided in a marks hash with 
+        # student name as key and marks obtained (out of 100) as 
+        # value pair, along with the pass_marks as argument.
+        
+        # The method group_by_marks must return a Hash containing an 
+        # array of students who passed as value to Passed key, and 
+        # those who failed as value to Failed key. If a particular 
+        # key is empty, don't return that key.
+        
+        # For example,
+        def group_by_marks(marks, pass_marks)
+            marks.group_by do |k,v| 
+              v > pass_marks ? "Passed" : "Failed"
+            end
+          end
+        
+        s = {"Ramesh":23, "Vivek":40, "Harsh":88, "Mohammad":60}
+        group_by_marks(marks, 30)
+        # => {"Failed"=>[["Ramesh", 23]], "Passed"=>[["Vivek", 40], ["Harsh", 88], ["Mohammad", 60]]}
         
 
 def new
