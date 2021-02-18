@@ -390,6 +390,25 @@
         "simmy", 100  
         "vivmbbs",200
         hackerrank = {"simmy" => 100, "vivmbbs" => 200}
+        grades =  { "Jane Doe" => 10, "Jim Doe" => 6 }
+        h = { :font_size => 10, :font_family => "Arial" }
+        h = { font_size: 10, font_family: "Arial" }
+        h["addd"] = 12 # => {:font_size=>10, :font_family=>"Arial", "addd"=>100} 
+
+        h.keys
+        h.values 
+        h["addd"].upcase!
+        h["addd"].downcase! 
+
+        h.keys[0] # => :font_size
+        h.delete("a")  
+        h.delete_if {|key, value| key >= "b" }
+        h.empty?   #=> false
+        h.has_key?("a") # => false
+        h.has_value?(100) # => true
+        a =  {1=> "one", 2 => [2,"two"], 3 => "three"}
+        a.flatten    # => [1, "one", 2, [2, "two"], 3, "three"] 
+        a.flatten(2) # => [1, "one", 2, 2, "two", 3, "three"]
 
     Hash can be defined using a new method
 
@@ -692,6 +711,15 @@ Ruby Enumerables: 'any', 'all', 'none', and 'find'
         group_by_marks(marks, 30)
         # => {"Failed"=>[["Ramesh", 23]], "Passed"=>[["Vivek", 40], ["Harsh", 88], ["Mohammad", 60]]}
         
+# SORT NUMERIC ARRAY 
+    a = [ 0,9,6,12,1]
+    # INCREASING ORDER
+        asc_ary = a.sort  
+    # or 
+    # DECREASING ORDER 
+        des_ary = a.sort_by { |number| -number }
+        des_ary = a.sort.reverse
+        des_ary = a.sort {|x,y| -(x <=> y)}
 
 def new
 
